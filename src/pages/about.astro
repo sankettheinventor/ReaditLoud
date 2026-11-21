@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+const SITE = Astro.site ?? new URL('https://example.com/');
+// AboutPage + Organization entity data — gives answer engines a clear, citable
+// definition of who ReaditLoud is, what it does, and how it works.
+const aboutLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'About ReaditLoud',
+  url: new URL('/about', SITE).href,
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'ReaditLoud',
+    url: SITE.href,
+    logo: new URL('/icon-512.png', SITE).href,
+    foundingDate: '2026',
+    founder: { '@type': 'Person', name: 'Sanket Toraskar' },
+    description:
+      'ReaditLoud reads your documents aloud, scans paper into clean PDFs and edits PDFs, all on your phone, with no signup, no ads and no uploads.',
+    knowsAbout: ['text to speech', 'PDF reader', 'document scanning', 'PDF tools', 'on-device processing', 'data privacy'],
+  },
+};
+---
+<Base title="About ReaditLoud — Listen to Any Document" description="ReaditLoud reads your PDFs, Word files, scans and articles aloud, scans paper into clean PDFs and edits PDFs, all on your phone. No signup, no ads, no uploads.">
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(aboutLd)} />
+  </Fragment>
+  <header class="head"><div class="wrap"><p class="kicker">About</p><h1>About ReaditLoud</h1></div></header>
+  <div class="content">
+    <p><b>ReaditLoud turns any document into something you can listen to.</b> Open a PDF, a Word file, a scan or a web article, and it reads it aloud with your phone's own voices, even with the screen off. It also scans paper into clean PDFs and includes a full set of PDF tools, all running on your device.</p>
+
+    <h2>What can ReaditLoud do?</h2>
+    <p><b>Listen:</b> read-aloud for PDFs, Word files, scans and articles, with background playback, resume, speed and voice choice. <b>Read:</b> Book mode with real page flips, plus Scroll and Grid views, highlights and notes. <b>Scan:</b> documents with auto-crop, QR codes, and text from photos. <b>PDF tools:</b> compress, split, organise, rotate, watermark, sign, page numbers and conversions between PDF, Word and images.</p>
+
+    <h2>How does ReaditLoud protect my privacy?</h2>
+    <p><b>Nothing you open is ever uploaded, stored, or seen by us.</b> Every tool runs on your device. There is no account, no server, no ads and no analytics, so your documents never leave your phone.</p>
+
+    <h2>Who is behind ReaditLoud?</h2>
+    <p>ReaditLoud is independently built and maintained by <b>Sanket Toraskar</b>. Questions, feedback or an idea? Open an issue on <a href="https://github.com/sankettheinventor/ReaditLoud/issues" rel="noopener">GitHub</a>.</p>
+  </div>
+</Base>

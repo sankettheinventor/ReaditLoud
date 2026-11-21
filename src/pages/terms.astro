@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+const title = 'Terms of Use — ReaditLoud';
+const description = 'Terms for using the ReaditLoud app, including acceptable use and the accuracy of results.';
+const updated = 'July 2026';
+---
+<Base title={title} description={description}>
+  <main>
+    <div class="wrap doc-page">
+      <p class="doc-kicker">Legal</p>
+      <h1 class="doc-h1">Terms of Use</h1>
+      <p class="doc-updated">Last updated: {updated}</p>
+
+      <div class="doc-tldr">
+        <b>The short version:</b> ReaditLoud is a free set of tools that run <b>on your device</b>. Use them for anything lawful. Results such as OCR text and conversions can contain mistakes, so please double-check anything important.
+      </div>
+
+      <h2 class="doc-h2">1. Use of the app</h2>
+      <p>ReaditLoud provides free utilities — read-aloud, a document reader, PDF tools, a scanner, OCR and converters — that run on your device. You may use them for lawful personal and commercial purposes. The app is provided "as is" without warranties of any kind.</p>
+
+      <h2 class="doc-h2">2. Accuracy</h2>
+      <p>We aim for correct formulas and results but do not guarantee accuracy for every scenario, currency or jurisdiction. You are responsible for confirming results before relying on them.</p>
+
+      <h2 class="doc-h2">3. Your content is yours</h2>
+      <p>The documents, scans and files you create or open in ReaditLoud belong to you and stay on your device. You are responsible for the files you process and for keeping your own backups — ReaditLoud has no servers and cannot recover anything for you.</p>
+
+      <h2 class="doc-h2">4. Limitation of liability</h2>
+      <p>To the maximum extent permitted by law, ReaditLoud and its operators are not liable for any loss or damage arising from use of the app or reliance on any result it produces.</p>
+
+      <h2 class="doc-h2">5. Changes</h2>
+      <p>We may update these terms from time to time. Continued use of the app after changes means you accept the revised terms.</p>
+
+      <h2 class="doc-h2">6. Contact</h2>
+      <p>Questions about these terms? Open an issue at <a href="https://github.com/sankettheinventor/ReaditLoud/issues" rel="noopener">github.com/sankettheinventor/ReaditLoud</a>.</p>
+    </div>
+  </main>
+</Base>

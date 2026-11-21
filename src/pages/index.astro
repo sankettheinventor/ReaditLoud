@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import WebHome from '../web/WebHome.astro';
+import AppHome from '../app/AppHome.astro';
+
+// One route, two homes: the app gets the native-style AppHome (bottom-nav shell,
+// icon grid); the website keeps WebHome. Tool pages are shared.
+const IS_APP = import.meta.env.PUBLIC_APP_BUILD === '1';
+const title = 'ReaditLoud — Listen to Any Document';
+const description = 'ReaditLoud reads your PDFs, Word files, scans and articles aloud, scans documents and edits PDFs. Everything runs on your device: no signup, no ads, no uploads.';
+---
+<Base title={title} description={description}>
+  {IS_APP ? <AppHome /> : <WebHome />}
+</Base>

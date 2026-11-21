@@ -1,0 +1,67 @@
+---
+/* ReaditLoud WEB home (sections + descriptions + ItemList JSON-LD).
+   Rendered only in the web build (index.astro picks it when NOT IS_APP). The app uses
+   src/app/AppHome.astro instead. Tool pages themselves are shared by both. */
+const sections = [
+  { id: 'read', h: '🎧 Listen & Read', sub: 'Open any document and have it read aloud, or read it like a book.', tools: [
+    { name: 'Read & Listen', url: '/tools/pdf-studio', ic: '📖', d: 'Read aloud, Book / Scroll / Grid views, highlights and notes.' },
+  ]},
+  { id: 'scan', h: '📷 Scan', sub: 'Turn paper, codes and photos into clean, usable files.', tools: [
+    { name: 'Document Scanner', url: '/tools/scanner', ic: '📄', d: 'Auto-cropped scans saved as a PDF.' },
+    { name: 'QR Scanner', url: '/tools/qr-scan', ic: '🔳', d: 'Read QR codes from the camera or a photo.' },
+    { name: 'Scan Text (OCR)', url: '/tools/text-scan', ic: '🔤', d: 'Copy the text out of any photo or page.' },
+  ]},
+  { id: 'pdf', h: '📄 PDF Tools', sub: 'Everyday PDF jobs, done on your device.', tools: [
+    { name: 'PDF Tools (merge)', url: '/tools/pdf-tools', ic: '🧩', d: 'Merge PDFs and reach every PDF tool.' },
+    { name: 'Compress PDF', url: '/tools/compress-pdf', ic: '🗜️', d: 'Shrink a PDF for sharing.' },
+    { name: 'Organize PDF', url: '/tools/organize-pdf', ic: '🗂️', d: 'Reorder, rotate and delete pages.' },
+    { name: 'Split PDF', url: '/tools/split-pdf', ic: '✂️', d: 'Split one PDF into several.' },
+    { name: 'Remove Pages', url: '/tools/remove-pages', ic: '🗑️', d: 'Delete the pages you don’t need.' },
+    { name: 'Extract Pages', url: '/tools/extract-pages', ic: '📤', d: 'Pull chosen pages into a new PDF.' },
+    { name: 'Rotate PDF', url: '/tools/rotate-pdf', ic: '🔄', d: 'Fix sideways or upside-down pages.' },
+    { name: 'Add Page Numbers', url: '/tools/add-page-numbers', ic: '🔢', d: 'Number every page, your way.' },
+    { name: 'Watermark PDF', url: '/tools/watermark-pdf', ic: '💧', d: 'Stamp text across every page.' },
+  ]},
+  { id: 'convert', h: '🔁 Create & Convert', sub: 'Move between PDF, Word, images and text.', tools: [
+    { name: 'JPG to PDF', url: '/tools/jpg-to-pdf', ic: '🖼️', d: 'Photos into one PDF.' },
+    { name: 'PDF to JPG', url: '/tools/pdf-to-jpg', ic: '🏞️', d: 'Every page as an image.' },
+    { name: 'Word to PDF', url: '/tools/word-to-pdf', ic: '📝', d: 'A .docx file into a PDF.' },
+    { name: 'PDF to Word', url: '/tools/pdf-to-word', ic: '📃', d: 'A PDF into an editable .docx.' },
+    { name: 'Text to PDF', url: '/tools/text-to-pdf', ic: '✍️', d: 'Typed or pasted text as a PDF.' },
+  ]},
+];
+const tools = sections.flatMap((s) => s.tools);
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'ReaditLoud tools',
+  itemListElement: tools.map((t, i) => ({
+    '@type': 'ListItem', position: i + 1, name: t.name,
+    url: new URL(t.url, Astro.site).href,
+  })),
+};
+---
+<Fragment slot="head">
+  <script type="application/ld+json" set:html={JSON.stringify(itemList)} />
+</Fragment>
+<header class="head head-home">
+  <div class="wrap">
+    <p class="kicker">Listen · Scan · PDF</p>
+    <h1>Listen to any document</h1>
+    <p>ReaditLoud reads your PDFs, Word files, scans and articles aloud, scans paper into clean PDFs and edits PDFs. <b>Everything runs on your device</b>: no signup, no ads, no uploads.</p>
+  </div>
+</header>
+
+<div class="wrap cats">
+  {sections.map((s) => (
+    <section class="cat" id={s.id}>
+      <h2>{s.h}</h2>
+      <p class="csub">{s.sub}</p>
+      <div class="tgrid">
+        {s.tools.map((t) => (
+          <a class="tcard" href={t.url}><div class="ti">{t.ic}</div><h3>{t.name}</h3><p>{t.d}</p></a>
+        ))}
+      </div>
+    </section>
+  ))}
+</div>
