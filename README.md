@@ -61,7 +61,7 @@ The UI is an Astro site bundled into a Capacitor Android app. Heavy lifting happ
 
 ## Build it yourself
 
-You need **Node 20**, **JDK 21** and, for running on a phone, **Android Studio** (or just the Android SDK).
+You need **Node 22**, **JDK 21** and, for running on a phone, **Android Studio** (or just the Android SDK).
 
 ```sh
 npm ci                                  # install (lockfile-exact)
